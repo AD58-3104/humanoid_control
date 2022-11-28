@@ -1,0 +1,62 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  basicTimeStep 8
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.5369979885436964 -0.6789460726750454 -0.5006649485425919 3.68649746149747
+  position 1.3692916176615553 1.343576500818994 2.8500367322672187
+}
+DirectionalLight {
+  direction 0 -1 0
+}
+Background {
+  skyColor [
+    0.15 0.45 1
+  ]
+}
+Floor {
+  rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931953
+}
+Can {
+  translation 0.3298827820646615 0.03168132999999975 0.7934273905276795
+  rotation -0.10285699754217048 0.9942852969043864 -0.028586472611466126 2.602376616527637
+  name "can(3)"
+}
+UR5e {
+  hidden position_0_0 2.3086832995439325e-06
+  hidden translation_1 0 0 0.163
+  hidden rotation_1 0 0 1 2.3086703308660253e-06
+  hidden position_1_0 5.7063226510497607e-05
+  hidden translation_2 0 0.138 0
+  hidden rotation_2 0 1 0 1.5708530652476453
+  hidden position_2_0 1.5707609659161544e-05
+  hidden translation_3 0 -0.131 0.425
+  hidden rotation_3 0 1 0 1.5707605150582484e-05
+  hidden position_3_0 3.069750298439386e-06
+  hidden translation_4 0 0 0.392
+  hidden rotation_4 0 0.9999999999999999 0 1.5707990675090953
+  hidden position_4_0 7.622681285913029e-09
+  hidden translation_5 0 0.127 0
+  hidden rotation_5 0 0 1 0
+  hidden position_5_0 -9.958208513363815e-09
+  hidden translation_6 0 0 0.1
+  hidden rotation_6 0 1 0 0
+  translation 0 0 -2.60289e-07
+  rotation 1 0 0 -1.5707953071795862
+  controller "webots_pinocchio_test"
+  toolSlot [
+    Robotiq3fGripper {
+    }
+  ]
+}
+Can {
+  translation -0.09167076413266553 0.031681329999999855 0.47104079711821734
+  rotation -0.069171402105132 0.9965453680892175 -0.04596353414105631 1.9717959821502622
+  name "can(4)"
+}
+Can {
+  translation -1.2808820455414892e-06 0.06106566499999978 0.6999999984485832
+  rotation -0.577350168468663 0.5773503195501005 0.5773503195501006 2.0943952534746457
+  name "can(5)"
+}
