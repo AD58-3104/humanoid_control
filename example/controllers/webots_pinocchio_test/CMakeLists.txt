@@ -14,6 +14,7 @@ function(enable_ninja_output_coloring target)
     endif()
 endfunction(enable_ninja_output_coloring)
 
+set(EIGEN_NO_DEBUG ON)
 find_package(Eigen3 REQUIRED)
 
 if(DEFINED ENV{WEBOTS_HOME})
