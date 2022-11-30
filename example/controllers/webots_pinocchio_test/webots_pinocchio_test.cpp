@@ -5,17 +5,21 @@
 #include "pinocchio/spatial/explog.hpp"
 #include "pinocchio/algorithm/jacobian.hpp"
 
+#include <Eigen/Geometry> 
+
 #include <webots/Motor.hpp>
 #include <webots/Robot.hpp>
 #include <iostream>
+#include <string>
+#include <cstdlib>
 
 // model joints
-// joint name ::universe 0 
-// joint name ::shoulder_pan_joint 1 
-// joint name ::shoulder_lift_joint 2 
-// joint name ::elbow_joint 3 
-// joint name ::wrist_1_joint 4 
-// joint name ::wrist_2_joint 5 
+// joint name ::universe 0
+// joint name ::shoulder_pan_joint 1
+// joint name ::shoulder_lift_joint 2
+// joint name ::elbow_joint 3
+// joint name ::wrist_1_joint 4
+// joint name ::wrist_2_joint 5
 // joint name ::wrist_3_joint 6
 int main(int argc, char **argv)
 {
@@ -80,8 +84,38 @@ int main(int argc, char **argv)
 
   pinocchio::Data::Matrix6x J(6, model.nv);
   J.setZero();
-  const int JOINT_ID = 6; //endeffector が連結してるjoint
-  const pinocchio::SE3 oMdes(Eigen::Matrix3d::Identity(), Eigen::Vector3d(0.4, 0., 0.1));
+  const int JOINT_ID = 6; // endeffector が連結してるjoint
+  double x = 0,y = 0,z = 0;
+  double roll = 0,pitch = 0,yaw = 0;
+  Eigen::Matrix3d rot ;
+  std::cout << " argc is " << argc << std::endl;
+  if (argc >= 7){
+    x = std::atof(argv[1]);
+    y = std::atof(argv[2]);
+    z = std::atof(argv[3]);
+    roll = std::atof(argv[4]);
+    pitch = std::atof(argv[5]);
+    yaw = std::atof(argv[6]);
+    Eigen::Matrix3d tmp;
+    rot = Eigen::AngleAxisd(roll * M_PI, Eigen::Vector3d::UnitX()) 
+        * Eigen::AngleAxisd(pitch * M_PI, Eigen::Vector3d::UnitY())
+        * Eigen::AngleAxisd(yaw * M_PI, Eigen::Vector3d::UnitZ());
+    std::cout << rot << std::endl;
+  }
+  else if (argc >= 4)
+  {
+    x = std::atof(argv[1]);
+    y = std::atof(argv[2]);
+    z = std::atof(argv[3]);
+  }
+  else
+  {
+    x = 0.4;
+    y = 0.;
+    z = 0.1;
+    rot = Eigen::Matrix3d::Identity();
+  }
+  const pinocchio::SE3 oMdes(rot , Eigen::Vector3d(x, y, z));
   Eigen::Matrix<double, 6, 1> err;
   Eigen::VectorXd v(model.nv);
   bool success = false;
