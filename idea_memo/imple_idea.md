@@ -1,0 +1,3 @@
+逆問題を解く事を抽象化したクラスを作る
+  solve_inverse_problemsみたいな。オーバーロードして与える入力によって切り替える。inverse dynamicsかinverse kinematicsみたいなそういうやつ
+  
